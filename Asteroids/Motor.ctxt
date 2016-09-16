@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=j
+comment0.target=Motor(Jogo)
+comment1.params=e
+comment1.target=void\ windowClosing(java.awt.event.WindowEvent)
+comment2.params=evt
+comment2.target=void\ keyPressed(java.awt.event.KeyEvent)
+comment3.params=evt
+comment3.target=void\ keyReleased(java.awt.event.KeyEvent)
+comment4.params=evt
+comment4.target=void\ keyTyped(java.awt.event.KeyEvent)
+comment5.params=
+comment5.target=void\ mainLoop()
+comment6.params=evt
+comment6.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment7.params=evt
+comment7.target=java.lang.String\ keyString(java.awt.event.KeyEvent)
+comment8.params=filename
+comment8.target=void\ tocar(java.lang.String)
+numComments=9

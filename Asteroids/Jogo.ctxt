@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Jogo()
+comment1.params=
+comment1.target=java.lang.String\ getTitulo()
+comment2.params=
+comment2.target=int\ getAltura()
+comment3.params=
+comment3.target=int\ getLargura()
+comment4.params=tecla
+comment4.target=void\ tecla(java.lang.String)
+comment5.params=teclas\ dt
+comment5.target=void\ tique(java.util.Set,\ double)
+comment6.params=tela
+comment6.target=void\ desenhar(Tela)
+comment7.params=args
+comment7.target=void\ main(java.lang.String[])
+numComments=8

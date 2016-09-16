@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=g
+comment0.target=Tela(java.awt.Graphics2D)
+comment1.params=x1\ y1\ x2\ y2\ x3\ y3\ cor
+comment1.target=void\ triangulo(int,\ int,\ int,\ int,\ int,\ int,\ Cor)
+comment10.params=texto\ x\ y\ tamanho\ cor
+comment10.target=void\ texto(java.lang.String,\ double,\ double,\ int,\ Cor)
+comment11.params=arquivo\ xa\ ya\ larg\ alt\ dir\ x\ y
+comment11.target=void\ imagem(java.lang.String,\ int,\ int,\ int,\ int,\ double,\ double,\ double)
+comment2.params=x1\ y1\ x2\ y2\ x3\ y3\ cor
+comment2.target=void\ triangulo(double,\ double,\ double,\ double,\ double,\ double,\ Cor)
+comment3.params=cx\ cy\ raio\ cor
+comment3.target=void\ circulo(int,\ int,\ int,\ Cor)
+comment4.params=cx\ cy\ raio\ cor
+comment4.target=void\ circulo(double,\ double,\ int,\ Cor)
+comment5.params=x\ y\ lado\ cor
+comment5.target=void\ quadrado(int,\ int,\ int,\ Cor)
+comment6.params=x\ y\ lado\ cor
+comment6.target=void\ quadrado(double,\ double,\ int,\ Cor)
+comment7.params=x\ y\ largura\ altura\ cor
+comment7.target=void\ retangulo(int,\ int,\ int,\ int,\ Cor)
+comment8.params=x\ y\ largura\ altura\ cor
+comment8.target=void\ retangulo(double,\ double,\ int,\ int,\ Cor)
+comment9.params=texto\ x\ y\ tamanho\ cor
+comment9.target=void\ texto(java.lang.String,\ int,\ int,\ int,\ Cor)
+numComments=12
