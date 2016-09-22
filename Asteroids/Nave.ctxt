@@ -1,6 +1,14 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Nave()
-comment1.params=t
-comment1.target=void\ desenhar(Tela)
-numComments=2
+comment1.params=dt
+comment1.target=void\ to_left(double)
+comment2.params=dt
+comment2.target=void\ to_right(double)
+comment3.params=dt
+comment3.target=void\ acelerate(double)
+comment4.params=dt\ jogo
+comment4.target=void\ move(double,\ Jogo)
+comment5.params=t
+comment5.target=void\ desenhar(Tela)
+numComments=6

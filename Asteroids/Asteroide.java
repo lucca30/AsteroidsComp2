@@ -3,8 +3,8 @@ public class Asteroide{
     int size;
     int cor;
     int Vx, Vy;
-    double Rs;
-    
+    double Rs, Rotation;
+    Hitbox_circle hit;
     
     
     public Asteroide(){
@@ -13,13 +13,17 @@ public class Asteroide{
         this.Vx = (int) Math.round(Math.random() * 300);
         this.Vy = (int) Math.round(Math.random() * 300);
         this.size = (int) Math.round(Math.random() * 4);
-        this.cor = (int) Math.round(Math.random() * 11);
-        this.Rs = (Math.random() * 2*Math.PI);
+        this.cor = (int) Math.round(Math.random() * 10);
+        this.Rs = (Math.random() * 0.01*Math.PI);
+        this.Rotation =  0;
+        this.hit = new Hitbox_circle(this.x, this.y, 32);
     }
     
     public void mover(double dt, Jogo jogo){
         x += Vx * dt;
         y += Vy * dt;
+        hit.x = x;
+        hit.y = y;
         if(x>= jogo.getLargura()){x = 0;}
         else if(x<=0){x = jogo.getLargura();}
         if(y>= jogo.getAltura()){y = 0;}
@@ -50,7 +54,7 @@ public class Asteroide{
             break;
            
         }
-        t.imagem("asteroids.png", xi, yi, larg, alt, 0.0, x, y);
+        t.imagem("asteroids.png", xi, yi, larg, alt, Rotation, x, y);
     }
     
     

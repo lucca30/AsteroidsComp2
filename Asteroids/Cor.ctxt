@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=r\ g\ b
 comment0.target=Cor(int,\ int,\ int)
-comment0.text=\n\ Cria\ uma\ cor\ dados\ os\ componentes\ entre\ 0\ e\ 255\n
+comment0.text=\r\n\ Cria\ uma\ cor\ dados\ os\ componentes\ entre\ 0\ e\ 255\r\n
 comment1.params=r\ g\ b
 comment1.target=Cor(double,\ double,\ double)
-comment1.text=\n\ Cria\ uma\ cor\ dados\ os\ componentes\ entre\ 0\ e\ 1\n
+comment1.text=\r\n\ Cria\ uma\ cor\ dados\ os\ componentes\ entre\ 0\ e\ 1\r\n
 numComments=2

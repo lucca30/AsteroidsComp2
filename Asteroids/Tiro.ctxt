@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=nave
+comment0.target=Tiro(Nave)
+comment1.params=t
+comment1.target=void\ desenhar(Tela)
+comment2.params=dt
+comment2.target=void\ mover(double)
+numComments=3

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=x\ y\ raio
+comment0.target=Hitbox_circle(double,\ double,\ double)
+comment1.params=x\ y\ raio
+comment1.target=Hitbox_circle(double,\ double,\ int)
+comment2.params=Circ
+comment2.target=boolean\ colision(Hitbox_circle)
+numComments=3
