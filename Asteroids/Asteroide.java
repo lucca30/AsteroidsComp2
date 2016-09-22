@@ -30,7 +30,7 @@ public class Asteroide{
         this.cor = (int) Math.round(Math.random() * 10);
         this.Rs = (Math.random() * 2*Math.PI);
         this.Rotation =  0;
-        this.hit = new Hitbox_circle(this.x, this.y, 32);
+        this.hit = new Hitbox_circle(this.x, this.y, this.size);
         this.live = true;
     }
     
@@ -68,8 +68,7 @@ public class Asteroide{
             break;
            case 4:
             xi=65;
-            larg = 47;
-            alt = 47;
+            larg = alt = 47;
             break;
            
         }

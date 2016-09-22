@@ -9,8 +9,8 @@ public class Tiro {
 	public Tiro(Nave nave){
     	this.vx = Math.sin(nave.Rotation)*Speed+nave.vx;
     	this.vy = -Math.cos(nave.Rotation)*Speed+nave.vy;
-    	this.x = nave.hit.x_f;
-		this.y = nave.hit.y_f;
+    	this.x = nave.x_f;
+		this.y = nave.y_f;
 		this.cor = new Cor(255, 255, 255);
 		this.hit = new Hitbox_circle(this.x, this.y, Raio);
 		this.live = true;

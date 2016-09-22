@@ -3,4 +3,6 @@ comment0.params=limite
 comment0.target=Pilha(int)
 comment1.params=pedra
 comment1.target=void\ push(Asteroide)
-numComments=2
+comment2.params=dt
+comment2.target=void\ gera(double)
+numComments=3

@@ -6,6 +6,7 @@ public class Jogo{
     Pilha pilha = new Pilha(5000);
     Nave nave = new Nave();
     List<Tiro> Lista_tiros = new ArrayList<Tiro>();
+    int score =0, lives = 3;
     public Jogo(){
         for(int i=0;i<6;i++){
             pilha.push(new Asteroide());
@@ -51,17 +52,12 @@ public class Jogo{
         for(Tiro elemento : Lista_tiros){
             if(!elemento.live){continue;}
             elemento.mover(dt);
-//            if(elemento.x>= this.getLargura() || elemento.x<=0){
-//              Lista_tiros.remove(elemento);
-//            }
-//            if(elemento.y>=this.getAltura() || elemento.y<=0){
-//              Lista_tiros.remove(elemento);
-//            }
             for(int i=0;i<pilha.topo;i++){
                 if(pilha.array[i].hit.colision(elemento.hit)){
                     if(!pilha.array[i].live){continue;}
                     pilha.array[i].live = false;
                     elemento.live = false;
+                    score+=100;
                     if(pilha.array[i].size==3){
                         pilha.push(new Asteroide(1, -pilha.array[i].Vx, pilha.array[i].Vy, pilha.array[i].x, pilha.array[i].y));
                         pilha.push(new Asteroide(1, pilha.array[i].Vx, -pilha.array[i].Vy, pilha.array[i].x, pilha.array[i].y));
@@ -74,16 +70,28 @@ public class Jogo{
                     pilha.array[i].y = 10000;
                     break;
                 }
-            }
-            
+            }    
         }
         
+        for(int i=0;i<pilha.topo;i++){
+            if(pilha.array[i].hit.colision(nave.hit)){
+                if(!pilha.array[i].live){continue;}
+                lives--;
+                nave = new Nave();
+                pilha.array[i].live = false;
+                pilha.array[i].x = 10000;
+                pilha.array[i].y  = 10000;
+            }
+        }
+        pilha.gera(dt);
     }
     
     
     public void desenhar(Tela tela){
-        
+        tela.texto(String.format("%04d", score), 10, 36, 36, Cor.BRANCO);
+
         for(int i=0;i<pilha.topo;i++){
+            if(!pilha.array[i].live){continue;}
             pilha.array[i].desenhar(tela);
         }
         for(Tiro elemento : Lista_tiros){
@@ -91,6 +99,7 @@ public class Jogo{
             elemento.desenhar(tela);
         }
         nave.desenhar(tela);
+        
     }
     public static void main(String[] args) {
         new Motor(new Jogo());
