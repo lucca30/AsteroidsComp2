@@ -3,6 +3,7 @@ public class Tiro {
 	static int Raio = 1;
 	double x, y, vx, vy;
 	Cor cor;
+	boolean live;
 	Hitbox_circle hit;
 	
 	public Tiro(Nave nave){
@@ -12,6 +13,7 @@ public class Tiro {
 		this.y = nave.hit.y_f;
 		this.cor = new Cor(255, 255, 255);
 		this.hit = new Hitbox_circle(this.x, this.y, Raio);
+		this.live = true;
 	}
 	public void desenhar(Tela t){
 		t.circulo(x, y, Raio, cor);		

@@ -1,16 +1,14 @@
 import java.util.Set;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Jogo{
-    Asteroide[] pedras = new Asteroide[6];
+    Pilha pilha = new Pilha(5000);
     Nave nave = new Nave();
     List<Tiro> Lista_tiros = new ArrayList<Tiro>();
-    Iterator<Tiro> it = Lista_tiros.iterator();
     public Jogo(){
         for(int i=0;i<6;i++){
-            pedras[i] = new Asteroide();
+            pilha.push(new Asteroide());
         }
     }
     public String getTitulo(){
@@ -25,17 +23,16 @@ public class Jogo{
     
     
     public void tecla(String tecla){
-    	if(tecla.equals(" ")){
-    		Lista_tiros.add(new Tiro(nave));
-    	}
-    	
+        if(tecla.equals(" ")){
+            Lista_tiros.add(new Tiro(nave));
+        }
+        
     }
     
     
     public void tique(Set<String> teclas, double dt){
-        for(Asteroide elemento:pedras){
-        	elemento.Rotation += elemento.Rs;
-            elemento.mover(dt, this);
+        for(int i=0;i<pilha.topo;i++){
+            pilha.array[i].mover(dt, this);
         }       
         if(teclas.contains("up")){
             nave.on = true;
@@ -46,24 +43,39 @@ public class Jogo{
         }
         nave.move(dt, this);
         if(teclas.contains("right")){
-        	nave.to_right(dt);
+            nave.to_right(dt);
         }
         else if(teclas.contains("left")){
-        	nave.to_left(dt);
+            nave.to_left(dt);
         }
         for(Tiro elemento : Lista_tiros){
-        	elemento.mover(dt);
+            if(!elemento.live){continue;}
+            elemento.mover(dt);
 //            if(elemento.x>= this.getLargura() || elemento.x<=0){
-//            	Lista_tiros.remove(elemento);
+//              Lista_tiros.remove(elemento);
 //            }
 //            if(elemento.y>=this.getAltura() || elemento.y<=0){
-//            	Lista_tiros.remove(elemento);
+//              Lista_tiros.remove(elemento);
 //            }
-        	for(Asteroide pedra:pedras){
-        		if(elemento.hit.colision(pedra.hit)){
-        			pedra.x = pedra.y = 1000000;
-        		}
-        	}
+            for(int i=0;i<pilha.topo;i++){
+                if(pilha.array[i].hit.colision(elemento.hit)){
+                    if(!pilha.array[i].live){continue;}
+                    pilha.array[i].live = false;
+                    elemento.live = false;
+                    if(pilha.array[i].size==3){
+                        pilha.push(new Asteroide(1, -pilha.array[i].Vx, pilha.array[i].Vy, pilha.array[i].x, pilha.array[i].y));
+                        pilha.push(new Asteroide(1, pilha.array[i].Vx, -pilha.array[i].Vy, pilha.array[i].x, pilha.array[i].y));
+                    }
+                    else if(pilha.array[i].size==4){
+                        pilha.push(new Asteroide(2, -pilha.array[i].Vx, pilha.array[i].Vy, pilha.array[i].x, pilha.array[i].y));
+                        pilha.push(new Asteroide(1, pilha.array[i].Vx, -pilha.array[i].Vy, pilha.array[i].x, pilha.array[i].y));
+                    }
+                    pilha.array[i].x = 10000;
+                    pilha.array[i].y = 10000;
+                    break;
+                }
+            }
+            
         }
         
     }
@@ -71,11 +83,12 @@ public class Jogo{
     
     public void desenhar(Tela tela){
         
-        for(Asteroide elemento:pedras){
-            elemento.desenhar(tela);
+        for(int i=0;i<pilha.topo;i++){
+            pilha.array[i].desenhar(tela);
         }
         for(Tiro elemento : Lista_tiros){
-        	elemento.desenhar(tela);
+            if(!elemento.live){continue;}
+            elemento.desenhar(tela);
         }
         nave.desenhar(tela);
     }
