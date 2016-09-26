@@ -32,12 +32,13 @@ public class Jogo{
         if(lives==0){return;}
         if(tecla.equals(" ")){
             Lista_tiros.add(new Tiro(nave));
+            Motor.tocar("shoot.wav");
         }        
     }
     
     public void tique(Set<String> teclas, double dt){
-        if(lives==0){return;}
         move(dt);
+        if(lives==0){return;}
         K_events(teclas, dt);
         Colision_events(dt);
         pilha.gera(dt, nave);
@@ -45,22 +46,21 @@ public class Jogo{
         
     public void desenhar(Tela tela){
         if(lives==0){
-            tela.texto(String.format("GAME OVER"), 170, 300, 70, Cor.BRANCO);        
-            return;
+            tela.texto(String.format("GAME OVER"), 170, 300, 70, Cor.BRANCO);
         }
-        tela.texto(String.format("%04d", score), 10, 36, 36, Cor.BRANCO);
-        tela.texto(String.format("%d", lives), 770  , 36, 36, Cor.BRANCO);
-
+        else{
+            tela.texto(String.format("%04d", score), 10, 36, 36, Cor.BRANCO);
+            tela.texto(String.format("%d", lives), 770  , 36, 36, Cor.BRANCO);
+            for(Tiro elemento : Lista_tiros){
+                if(!elemento.live){continue;}
+                elemento.desenhar(tela);
+            }
+            nave.desenhar(tela);
+        }
         for(int i=0;i<pilha.topo;i++){
             if(!pilha.array[i].live){continue;}
             pilha.array[i].desenhar(tela);
-        }
-        for(Tiro elemento : Lista_tiros){
-            if(!elemento.live){continue;}
-            elemento.desenhar(tela);
-        }
-        nave.desenhar(tela);
-        
+        }        
     }
    
     public static void main(String[] args) {
@@ -73,7 +73,8 @@ public class Jogo{
     public void move(double dt){
         for(int i=0;i<pilha.topo;i++){
             pilha.array[i].mover(dt, this);
-        }       
+        }    
+        if(lives==0){return;}
         nave.move(dt, this);    
     }
     
@@ -121,6 +122,7 @@ public class Jogo{
         for(int i=0;i<pilha.topo;i++){
             if(pilha.array[i].hit.colision(nave.hit)){
                 if(!pilha.array[i].live){continue;}
+                Motor.tocar("explosion.wav");
                 lives--;
                 nave = new Nave();
                 pilha.array[i].live = false;
