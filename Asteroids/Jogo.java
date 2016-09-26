@@ -89,6 +89,7 @@ public class Jogo{
     
     public void desenhar(Tela tela){
         tela.texto(String.format("%04d", score), 10, 36, 36, Cor.BRANCO);
+        tela.texto(String.format("%d", lives), 770  , 36, 36, Cor.BRANCO);
 
         for(int i=0;i<pilha.topo;i++){
             if(!pilha.array[i].live){continue;}

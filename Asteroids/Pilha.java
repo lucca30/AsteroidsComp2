@@ -1,5 +1,5 @@
 public class Pilha{
-    static double new_pedra_time = 2.5;
+    static double new_pedra_time = 5;
     int topo;
     Asteroide[] array;
     double ciclo;

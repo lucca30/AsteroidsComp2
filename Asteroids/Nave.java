@@ -22,7 +22,7 @@ public class Nave{
         this.vy = 0;
         this.x_f = this.x;
         this.y_f = this.y+this.center_tofront;
-        this.hit = new Hitbox_circle(this.x+larg/2, this.y+alt/2, 5.0);
+        this.hit = new Hitbox_circle(this.x+larg/2, this.y+alt/2, 13.0);
     }
     
     public void to_left(double dt){
