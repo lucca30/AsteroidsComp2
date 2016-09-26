@@ -9,6 +9,8 @@ public class Asteroide{
     static int DIM_size3 = 32;
     static int DIM_size4 = 47;
     
+    static double Spawn_dist = 300.0;
+    
     double x, y;
     int size;
     int cor;
@@ -17,29 +19,44 @@ public class Asteroide{
     boolean live;
     Hitbox_circle hit;
     int xi, yi, alt, larg;
-    public Asteroide(){
-        this.x = Math.round(Math.random() * 700);
-        this.y =  Math.round(Math.random() * 500);
+    
+    
+    
+    public Asteroide(Nave nave){
+        this.size = (int) Math.round(Math.random() * 3)+1;
+        while(true){
+            this.x = Math.round(Math.random() * 700);
+            this.y =  Math.round(Math.random() * 500);
+            this.hit = new Hitbox_circle(this.x, this.y, this.size);
+
+            if(Math.sqrt((this.x-nave.x)*(this.x-nave.x) + (this.y-nave.y)*(this.y-nave.y)) >= Spawn_dist){
+                break;
+            }
+        }
         this.Vx =  Math.round(Math.random() * 300);
         this.Vy =  Math.round(Math.random() * 300);
-        this.size = (int) Math.round(Math.random() * 3)+1;
         this.cor = (int) Math.round(Math.random() * 10);
         this.Rs = (Math.random() * 2*Math.PI);
         this.Rotation =  0;
-        this.hit = new Hitbox_circle(this.x, this.y, this.size);
         this.live = true;
     }
 
-    public Asteroide(int size){
-        this.x = Math.round(Math.random() * 700);
-        this.y =  Math.round(Math.random() * 500);
+    public Asteroide(int size, Nave nave){
+        this.size = size;
+        while(true){
+            this.x = Math.round(Math.random() * 700);
+            this.y =  Math.round(Math.random() * 500);
+            this.hit = new Hitbox_circle(this.x, this.y, this.size);
+
+            if(Math.sqrt((this.x-nave.x)*(this.x-nave.x) + (this.y-nave.y)*(this.y-nave.y)) >= Spawn_dist){
+                break;
+            }
+        }
         this.Vx =  Math.round(Math.random() * 300);
         this.Vy =  Math.round(Math.random() * 300);
-        this.size = size;
         this.cor = (int) Math.round(Math.random() * 10);
         this.Rs = (Math.random() * 2*Math.PI);
         this.Rotation =  0;
-        this.hit = new Hitbox_circle(this.x, this.y, this.size);
         this.live = true;
     }
     
@@ -57,9 +74,7 @@ public class Asteroide{
     }
     
     
-    
-    
-    
+        
     public void mover(double dt, Jogo jogo){
         if(!live){return;}
         x += Vx * dt;

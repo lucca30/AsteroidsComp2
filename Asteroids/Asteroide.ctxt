@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Asteroide()
-comment1.params=size
-comment1.target=Asteroide(int)
+comment0.params=nave
+comment0.target=Asteroide(Nave)
+comment1.params=size\ nave
+comment1.target=Asteroide(int,\ Nave)
 comment2.params=size\ vx\ vy\ x\ y
 comment2.target=Asteroide(int,\ double,\ double,\ double,\ double)
 comment3.params=dt\ jogo

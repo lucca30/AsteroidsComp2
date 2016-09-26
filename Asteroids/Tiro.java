@@ -6,6 +6,7 @@ public class Tiro {
 	boolean live;
 	Hitbox_circle hit;
 	
+	
 	public Tiro(Nave nave){
     	this.vx = Math.sin(nave.Rotation)*Speed+nave.vx;
     	this.vy = -Math.cos(nave.Rotation)*Speed+nave.vy;
@@ -15,6 +16,8 @@ public class Tiro {
 		this.hit = new Hitbox_circle(this.x, this.y, Raio);
 		this.live = true;
 	}
+	
+	
 	public void desenhar(Tela t){
 		t.circulo(x, y, Raio, cor);		
 	}
@@ -25,6 +28,4 @@ public class Tiro {
 		hit.x = x;
 		hit.y = y;
 	}
-	
-	
 }

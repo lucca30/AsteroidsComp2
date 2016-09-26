@@ -8,9 +8,11 @@ public class Jogo{
     Nave nave = new Nave();
     List<Tiro> Lista_tiros = new ArrayList<Tiro>();
     int score =0, lives = 3;
+    
+    
     public Jogo(){
         for(int i=0;i<6;i++){
-            pilha.push(new Asteroide());
+            pilha.push(new Asteroide(nave));
         }
     }
     
@@ -27,22 +29,25 @@ public class Jogo{
     }
         
     public void tecla(String tecla){
+        if(lives==0){return;}
         if(tecla.equals(" ")){
             Lista_tiros.add(new Tiro(nave));
-        }
-        
+        }        
     }
     
-    
     public void tique(Set<String> teclas, double dt){
+        if(lives==0){return;}
         move(dt);
         K_events(teclas, dt);
         Colision_events(dt);
-        pilha.gera(dt);
+        pilha.gera(dt, nave);
     }
-    
-    
+        
     public void desenhar(Tela tela){
+        if(lives==0){
+            tela.texto(String.format("GAME OVER"), 170, 300, 70, Cor.BRANCO);        
+            return;
+        }
         tela.texto(String.format("%04d", score), 10, 36, 36, Cor.BRANCO);
         tela.texto(String.format("%d", lives), 770  , 36, 36, Cor.BRANCO);
 
@@ -62,6 +67,8 @@ public class Jogo{
         new Motor(new Jogo());
     }
 
+    
+    
     /*Non-Default methods*/
     public void move(double dt){
         for(int i=0;i<pilha.topo;i++){

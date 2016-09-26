@@ -1,17 +1,23 @@
-
-
 public class Nave{
     static double Rs = 5;
     static double speed = 350;
     static double maxspeed = 450;
+    
     static int larg = 50;
     static int alt = 60;
     static double center_tofront = 18;
+    
+    static int Xarq_pause = 70;
+    static int Yarq_pause = 0;
+    static int Xarq_mov = 135;
+    static int Yarq_mov = 0;
+
     double x, y, Rotation;
     double vx, vy;
     boolean on;
     double x_f, y_f;    
     Hitbox_circle hit;
+    
     
     public Nave(){
         this.x = 400;
@@ -24,8 +30,7 @@ public class Nave{
         this.y_f = this.y+this.center_tofront;
         this.hit = new Hitbox_circle(this.x+larg/2, this.y+alt/2, 13.0);
     }
-    
-    
+        
     
     public void to_left(double dt){
         Rotation -= Rs*dt;
@@ -59,10 +64,10 @@ public class Nave{
     
     public void desenhar(Tela t){
         if(on){
-            t.imagem("naves.png", 135, 0, larg, alt, Rotation, x, y);
+            t.imagem("naves.png", Xarq_mov, Yarq_mov, larg, alt, Rotation, x, y);
         }
         else{
-            t.imagem("naves.png", 70, 0, larg, alt, Rotation, x, y);
+            t.imagem("naves.png", Xarq_pause, Yarq_mov, larg, alt, Rotation, x, y);
         }
     }
 }
