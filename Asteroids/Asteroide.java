@@ -1,4 +1,14 @@
 public class Asteroide{
+    static int X_size1 = 4;
+    static int X_size2 = 17;
+    static int X_size3 = 32;
+    static int X_size4 = 65;
+    
+    static int DIM_size1 = 8;
+    static int DIM_size2 = 15;
+    static int DIM_size3 = 32;
+    static int DIM_size4 = 47;
+    
     double x, y;
     int size;
     int cor;
@@ -6,14 +16,26 @@ public class Asteroide{
     double Rs, Rotation;
     boolean live;
     Hitbox_circle hit;
-    
-    
+    int xi, yi, alt, larg;
     public Asteroide(){
         this.x = Math.round(Math.random() * 700);
         this.y =  Math.round(Math.random() * 500);
         this.Vx =  Math.round(Math.random() * 300);
         this.Vy =  Math.round(Math.random() * 300);
         this.size = (int) Math.round(Math.random() * 3)+1;
+        this.cor = (int) Math.round(Math.random() * 10);
+        this.Rs = (Math.random() * 2*Math.PI);
+        this.Rotation =  0;
+        this.hit = new Hitbox_circle(this.x, this.y, this.size);
+        this.live = true;
+    }
+
+    public Asteroide(int size){
+        this.x = Math.round(Math.random() * 700);
+        this.y =  Math.round(Math.random() * 500);
+        this.Vx =  Math.round(Math.random() * 300);
+        this.Vy =  Math.round(Math.random() * 300);
+        this.size = size;
         this.cor = (int) Math.round(Math.random() * 10);
         this.Rs = (Math.random() * 2*Math.PI);
         this.Rotation =  0;
@@ -35,6 +57,9 @@ public class Asteroide{
     }
     
     
+    
+    
+    
     public void mover(double dt, Jogo jogo){
         if(!live){return;}
         x += Vx * dt;
@@ -48,32 +73,30 @@ public class Asteroide{
         Rotation += Rs*dt;
 
     }
-    int xi, yi, alt, larg;
+    
     public void desenhar(Tela t){
         if(!live){return;}
         if(size==1){yi=4 + (48 * cor);}
         else{yi=0 + (48 * cor);}
         switch(size){
            case 1:
-            xi=4;
-            larg = alt = 8;
+            xi = X_size1;
+            larg = alt = DIM_size1;
             break;
            case 2:
-            xi=17;
-            larg = alt = 15;
+            xi = X_size2;
+            larg = alt = DIM_size2;
             break;
            case 3:
-            xi=32;
-            larg = alt = 32;
+            xi = X_size3;
+            larg = alt = DIM_size3;
             break;
            case 4:
-            xi=65;
-            larg = alt = 47;
+            xi = X_size4;
+            larg = alt = DIM_size4;
             break;
            
         }
         t.imagem("asteroids.png", xi, yi, larg, alt, Rotation, x, y);
     }
-    
-    
 }

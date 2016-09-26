@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Asteroide()
-comment1.params=size\ vx\ vy\ x\ y
-comment1.target=Asteroide(int,\ double,\ double,\ double,\ double)
-comment2.params=dt\ jogo
-comment2.target=void\ mover(double,\ Jogo)
-comment3.params=t
-comment3.target=void\ desenhar(Tela)
-numComments=4
+comment1.params=size
+comment1.target=Asteroide(int)
+comment2.params=size\ vx\ vy\ x\ y
+comment2.target=Asteroide(int,\ double,\ double,\ double,\ double)
+comment3.params=dt\ jogo
+comment3.target=void\ mover(double,\ Jogo)
+comment4.params=t
+comment4.target=void\ desenhar(Tela)
+numComments=5

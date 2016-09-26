@@ -3,6 +3,7 @@ public class Pilha{
     int topo;
     Asteroide[] array;
     double ciclo;
+    
     public Pilha(int limite){
         this.topo = 0;
         this.array = new Asteroide[limite];
@@ -17,7 +18,7 @@ public class Pilha{
         ciclo += dt;
         if(ciclo>=new_pedra_time){
             ciclo = 0;
-            this.push(new Asteroide());
+            this.push(new Asteroide((int) Math.round(Math.random())+3));
         }
     }
 }

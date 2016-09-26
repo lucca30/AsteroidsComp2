@@ -25,6 +25,8 @@ public class Nave{
         this.hit = new Hitbox_circle(this.x+larg/2, this.y+alt/2, 13.0);
     }
     
+    
+    
     public void to_left(double dt){
         Rotation -= Rs*dt;
     }
@@ -32,6 +34,7 @@ public class Nave{
     public void to_right(double dt){
         Rotation += Rs*dt;
     }
+    
     public void acelerate(double dt){
         vx += dt*Math.sin(Rotation)*speed;
         vy -= dt*Math.cos(Rotation)*speed;
@@ -40,6 +43,7 @@ public class Nave{
         if(vy>=maxspeed){vy = maxspeed;}
         else if(vy<=-maxspeed){vy = -maxspeed;}
     }
+    
     public void move(double dt, Jogo jogo){
         x+=vx*dt;
         y+=vy*dt;
@@ -60,6 +64,5 @@ public class Nave{
         else{
             t.imagem("naves.png", 70, 0, larg, alt, Rotation, x, y);
         }
-
     }
 }
