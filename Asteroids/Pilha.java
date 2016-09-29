@@ -1,3 +1,6 @@
+/*
+ * Own Stack Implementation
+ */
 public class Pilha{
     static double new_pedra_time = 5;
     int topo;

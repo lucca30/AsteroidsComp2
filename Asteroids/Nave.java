@@ -41,6 +41,7 @@ public class Nave{
     }
     
     public void acelerate(double dt){
+        /*Mathematical calculation of the velocity components*/
         vx += dt*Math.sin(Rotation)*speed;
         vy -= dt*Math.cos(Rotation)*speed;
         if(vx>=maxspeed){vx = maxspeed;}
@@ -58,6 +59,8 @@ public class Nave{
         else if(y+alt/2<=0){y = jogo.getAltura();}
         hit.x = x+larg/2;
         hit.y = y+alt/2;
+        
+        /*Mathematical calculation of the spacecaft's front coordinates*/
         this.x_f = (x+larg/2) + (Math.sin(Rotation)*center_tofront);
         this.y_f = (y+alt/2) - (Math.cos(Rotation)*center_tofront); 
     }

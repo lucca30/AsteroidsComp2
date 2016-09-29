@@ -28,7 +28,7 @@ public class Asteroide{
             this.x = Math.round(Math.random() * 700);
             this.y =  Math.round(Math.random() * 500);
             this.hit = new Hitbox_circle(this.x, this.y, this.size);
-
+            /*Check the distance between spacecraft and new asteroid*/
             if(Math.sqrt((this.x-nave.x)*(this.x-nave.x) + (this.y-nave.y)*(this.y-nave.y)) >= Spawn_dist){
                 break;
             }
@@ -47,7 +47,8 @@ public class Asteroide{
             this.x = Math.round(Math.random() * 700);
             this.y =  Math.round(Math.random() * 500);
             this.hit = new Hitbox_circle(this.x, this.y, this.size);
-
+            
+            /*Check the distance between spacecraft and new asteroid*/
             if(Math.sqrt((this.x-nave.x)*(this.x-nave.x) + (this.y-nave.y)*(this.y-nave.y)) >= Spawn_dist){
                 break;
             }
@@ -81,6 +82,7 @@ public class Asteroide{
         y += Vy * dt;
         hit.x = x;
         hit.y = y;
+        /*Screen limits*/
         if(x>= jogo.getLargura()){x = 0;}
         else if(x<=0){x = jogo.getLargura();}
         if(y>= jogo.getAltura()){y = 0;}

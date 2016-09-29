@@ -1,3 +1,10 @@
+/*
+ * Author: Lucca Martins Felix
+ * 
+ *  This project was developed in GitHub.
+ *  See on github.com/lucca30
+ *
+ */
 import java.util.Set;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +78,7 @@ public class Jogo{
     
     /*Non-Default methods*/
     public void move(double dt){
+        /*Asteroids movement (Even after the end game)*/
         for(int i=0;i<pilha.topo;i++){
             pilha.array[i].mover(dt, this);
         }    
@@ -98,6 +106,7 @@ public class Jogo{
         for(Tiro elemento : Lista_tiros){
             if(!elemento.live){continue;}
             elemento.mover(dt);
+            /*Check colision with shots and asteroids*/
             for(int i=0;i<pilha.topo;i++){
                 if(pilha.array[i].hit.colision(elemento.hit)){
                     if(!pilha.array[i].live){continue;}
@@ -118,7 +127,7 @@ public class Jogo{
                 }
             }    
         }
-        
+        /*Check colision with spacecraft and asteroids*/
         for(int i=0;i<pilha.topo;i++){
             if(pilha.array[i].hit.colision(nave.hit)){
                 if(!pilha.array[i].live){continue;}

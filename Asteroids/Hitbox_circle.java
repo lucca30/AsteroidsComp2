@@ -1,3 +1,6 @@
+/*
+ * This was the solution developed as we did not know interfaces
+ */
 public class Hitbox_circle {
     double x, y, raio;
 
